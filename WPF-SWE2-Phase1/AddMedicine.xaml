@@ -1,0 +1,55 @@
+﻿<Page x:Class="WPF_SWE2_Phase1.AddMedicine"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="med" Height="600" Width="725">
+    <Page.Background>
+        <ImageBrush ImageSource="/imges/med.jpg" />
+    </Page.Background>
+    
+    <Grid>
+        <TextBlock Name="userTextBlock"  HorizontalAlignment="Left" Margin="562,67,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="18" Width="153" Height="62"/>
+        
+        <TextBlock FontWeight="Bold" Height="36" HorizontalAlignment="Center" Margin="182,93,352,471" Text=" Add Medicine " VerticalAlignment="Center" Width="191"  FontSize="20">
+            <TextBlock.LayoutTransform  >
+                <RotateTransform Angle="360 " />
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
+        <TextBlock FontWeight="Bold" Height="40" HorizontalAlignment="Center" Margin="14,182,520,382" Text=" Name of medicine " VerticalAlignment="Center" Width="190"  FontSize="20">
+            <TextBlock.LayoutTransform  >
+                <RotateTransform Angle="360 " />
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <TextBlock FontWeight="Bold" Height="40" HorizontalAlignment="Center" Margin="16,220,571,340" Text=" Price " VerticalAlignment="Center" Width="138"  FontSize="20">
+            <TextBlock.LayoutTransform  >
+                <RotateTransform Angle="360 " />
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <TextBlock FontWeight="Bold" Height="40" HorizontalAlignment="Center" Margin="14,264,573,296" Text=" Quantity " VerticalAlignment="Center" Width="138"  FontSize="20">
+            <TextBlock.LayoutTransform  >
+                <RotateTransform Angle="360 " />
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <TextBlock FontWeight="Bold" Height="40" HorizontalAlignment="Center" Margin="14,309,599,251" Text=" Category " VerticalAlignment="Center" Width="112"  FontSize="20">
+            <TextBlock.LayoutTransform  >
+                <RotateTransform Angle="360 " />
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+        <TextBlock FontWeight="Bold" Height="40" HorizontalAlignment="Center" Margin="10,354,603,206" Text=" EXP date " VerticalAlignment="Center" Width="112"  FontSize="20">
+            <TextBlock.LayoutTransform  >
+                <RotateTransform Angle="360 " />
+            </TextBlock.LayoutTransform>
+        </TextBlock>
+
+        <TextBox Name="nameTxtBox" HorizontalAlignment="Left" Height="40" Margin="220,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" FontSize="18"/>
+        <TextBox PreviewTextInput="priceTxtBox_PreviewTextInput_1" Name="priceTxtBox" HorizontalAlignment="Left" Height="40" Margin="220,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" FontSize="18"/>
+        <TextBox PreviewTextInput="priceTxtBox_PreviewTextInput_1" Name="quantityTxtBox" HorizontalAlignment="Left" Height="40" Margin="220,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" FontSize="18"/>
+        <TextBox Name="categoryTxtBox" HorizontalAlignment="Left" Height="40" Margin="220,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" FontSize="18"/>
+        <DatePicker Name="datePicker" HorizontalAlignment="Left" Height="40" Margin="220,359,0,0" VerticalAlignment="Top" Width="241" FontSize="18"/>
+        
+        <Button Content="Submit" HorizontalAlignment="Left" Margin="446,497,0,0" VerticalAlignment="Top" Width="100" Height="40" FontSize="20" Click="Button_Click_1"/>
+        <DataGrid Name="dataGrid" HorizontalAlignment="Left" Margin="16,399,0,0" VerticalAlignment="Top"/>
+
+
+    </Grid>
+</Page>
