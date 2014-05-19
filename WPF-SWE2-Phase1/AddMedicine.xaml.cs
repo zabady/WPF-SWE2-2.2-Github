@@ -23,7 +23,6 @@ namespace WPF_SWE2_Phase1
 
     /*  Da test mn laptop doaa
      * Da laptop Sara kman
-     * Da laptop rojena kman
      */
 
     public partial class AddMedicine : Page
