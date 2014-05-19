@@ -19,6 +19,12 @@ namespace WPF_SWE2_Phase1
     /// <summary>
     /// Interaction logic for AddMedicine.xaml
     /// </summary>
+    /// 
+
+
+    /*  Da test mn laptop doaa
+     */
+
     public partial class AddMedicine : Page
     {
         public AddMedicine()
