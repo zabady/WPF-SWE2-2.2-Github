@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="med" Height="600" Width="725">
     <!-- Da test mn laptop doaa -->
+    <!-- Da test mn laptop sara -->
     <Page.Background>
         <ImageBrush ImageSource="/imges/med.jpg" />
     </Page.Background>
