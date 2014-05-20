@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountLogicTest.cs" />
-    <Compile Include="Medicine_Logic_Test.cs" />
+    <Compile Include="MedicineLogicTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

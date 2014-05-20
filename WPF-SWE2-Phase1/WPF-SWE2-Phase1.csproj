@@ -81,9 +81,9 @@
       <DependentUpon>AddMedicine.xaml</DependentUpon>
     </Compile>
     <Compile Include="DBLayerStub\AccountLogic.cs" />
-    <Compile Include="DBLayerStub\medicine_Logic.cs" />
+    <Compile Include="DBLayerStub\MedicineLogic.cs" />
     <Compile Include="DBLayer\AccountLogic.cs" />
-    <Compile Include="DBLayer\medicine_Logic.cs" />
+    <Compile Include="DBLayer\MedicineLogic.cs" />
     <Compile Include="EditProfile.xaml.cs">
       <DependentUpon>EditProfile.xaml</DependentUpon>
     </Compile>

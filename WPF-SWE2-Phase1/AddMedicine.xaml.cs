@@ -23,21 +23,29 @@ namespace WPF_SWE2_Phase1
 
     public partial class AddMedicine : Page
     {
-        medicine_Logic med = new medicine_Logic();
+        MedicineLogic med = new MedicineLogic();
         bool check;
         public AddMedicine()
         {
             InitializeComponent();
             userTextBlock.Text = "Welcome: " + MainWindow.user.Name + "\nRole: Admin";
-          
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void SumbitClicked(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(nameTxtBox.Text) ||
+                string.IsNullOrEmpty(priceTxtBox.Text) || int.Parse(priceTxtBox.Text) <= 0 || 
+                string.IsNullOrEmpty(quantityTxtBox.Text) || int.Parse(quantityTxtBox.Text) <= 0 ||
+                string.IsNullOrEmpty(categoryTxtBox.Text) || 
+                datePicker.SelectedDate == null || datePicker.SelectedDate < DateTime.Now)
+            {
+                MessageBox.Show("Wrong value, please try again.");
+                return;
+            }
+
             try
             {
-                  //if(nameTxtBox.Text!=null|| int.Parse(priceTxtBox.Text)!=null||int.Parse(quantityTxtBox.Text)!=null|| categoryTxtBox.Text!=null|| (System.DateTime)datePicker.SelectedDate !=null)
-                check = med.Add_Medecine_Logic(nameTxtBox.Text, int.Parse(priceTxtBox.Text), int.Parse(quantityTxtBox.Text), categoryTxtBox.Text, (System.DateTime)datePicker.SelectedDate);
+                check = med.addMedicine(nameTxtBox.Text, int.Parse(priceTxtBox.Text), int.Parse(quantityTxtBox.Text), categoryTxtBox.Text, (System.DateTime)datePicker.SelectedDate);
                 if (check == true)
                 {
                     MessageBox.Show("Item: " + nameTxtBox.Text + "\n with price: " + int.Parse(priceTxtBox.Text) + "\n with quantity: " + int.Parse(quantityTxtBox.Text) + "\n at category: " + categoryTxtBox.Text + "\nit's expiry date: " + (System.DateTime)datePicker.SelectedDate);
@@ -45,12 +53,12 @@ namespace WPF_SWE2_Phase1
                 }
                 else
                 {
-                    MessageBox.Show("Error adding medicine");
+                    MessageBox.Show("Error adding medicine.");
                 }
             }
             catch
             {
-                MessageBox.Show("all fields are required");
+                MessageBox.Show("Error adding item in database.");
             }
         }
         

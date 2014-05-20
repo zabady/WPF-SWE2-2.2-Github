@@ -86,5 +86,10 @@ namespace WPF_SWE2_Phase1
             EditProfile editProfile = new EditProfile();
             this.NavigationService.Navigate(editProfile);
         }
+
+        private void PageLoaded(object sender, RoutedEventArgs e)
+        {
+            medicineData.ItemsSource = db.Medicines.ToList();
+        }
     }
 }

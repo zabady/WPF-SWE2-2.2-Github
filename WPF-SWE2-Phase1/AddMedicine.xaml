@@ -49,7 +49,7 @@
         <TextBox Name="categoryTxtBox" HorizontalAlignment="Left" Height="40" Margin="220,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" FontSize="18"/>
         <DatePicker Name="datePicker" HorizontalAlignment="Left" Height="40" Margin="220,359,0,0" VerticalAlignment="Top" Width="241" FontSize="18"/>
         
-        <Button Content="Submit" HorizontalAlignment="Left" Margin="446,497,0,0" VerticalAlignment="Top" Width="100" Height="40" FontSize="20" Click="Button_Click_1"/>
+        <Button Content="Submit" HorizontalAlignment="Left" Margin="446,497,0,0" VerticalAlignment="Top" Width="100" Height="40" FontSize="20" Click="SumbitClicked"/>
         <DataGrid Name="dataGrid" HorizontalAlignment="Left" Margin="16,399,0,0" VerticalAlignment="Top"/>
 
 
