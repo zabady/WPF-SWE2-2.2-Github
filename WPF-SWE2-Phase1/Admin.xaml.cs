@@ -86,7 +86,7 @@ namespace WPF_SWE2_Phase1
             }
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void EditProfileClicked(object sender, RoutedEventArgs e)
         {
             EditProfile editProfile = new EditProfile();
             this.NavigationService.Navigate(editProfile);

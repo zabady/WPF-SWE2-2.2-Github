@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.Entity;
 using System.Data;
+using WPF_SWE2_Phase1.DBLayer;
 
 namespace WPF_SWE2_Phase1
 {
@@ -28,25 +29,16 @@ namespace WPF_SWE2_Phase1
             userTextBlock.Text = "Welcome: " + MainWindow.user.Name + "\nRole: Admin";
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void SubmitClicked(object sender, RoutedEventArgs e)
         {
             if (nameTextField.Text != "" || PasswordTextField.Password != "")
             {
-                try
+                if (AccountLogic.editAccount(MainWindow.user, nameTextField.Text, PasswordTextField.Password))
                 {
-                    if (nameTextField.Text != "") MainWindow.user.Name = nameTextField.Text;
-                    if (PasswordTextField.Password != "") MainWindow.user.Password = PasswordTextField.Password;
-
-                    MainWindow.db.Entry(MainWindow.user).State = EntityState.Modified;
-                    MainWindow.db.SaveChanges();
-
                     MessageBox.Show("Done");
                     this.NavigationService.GoBack();
                 }
-                catch
-                {
-                    MessageBox.Show("Error updating database");
-                }
+                else MessageBox.Show("Error updating database");
             }
             else
             {
