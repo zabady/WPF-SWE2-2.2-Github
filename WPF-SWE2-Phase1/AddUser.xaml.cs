@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPF_SWE2_Phase1.DBLayer;
 
 namespace WPF_SWE2_Phase1
 {
@@ -26,25 +27,23 @@ namespace WPF_SWE2_Phase1
             userTextBlock.Text = "Welcome: " + MainWindow.user.Name + "\nRole: Admin";
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void SubmitCliced(object sender, RoutedEventArgs e)
         {
-            Account account = new Account();
-            account.Name = this.textBox1.Text;
-            account.Password = this.PasswordTextField.Password;
-            account.Role = (bool)AdminRadioBtn.IsChecked;
-
-            //MessageBox.Show(account.Name + "\n" + account.Password + "\n" + account.Role);
-
-            try
+            if (string.IsNullOrEmpty(usernameTextField.Text) ||
+                string.IsNullOrEmpty(PasswordTextField.Password))
             {
-                MainWindow.db.Accounts.Add(account);
-                MainWindow.db.SaveChanges();
+                MessageBox.Show("All fields are required");
+                return;
+            }
+
+            if (AccountLogic.addAccount(usernameTextField.Text,
+                                        PasswordTextField.Password,
+                                        (bool)AdminRadioBtn.IsChecked))
+            {
+                MessageBox.Show("User added successfully.");
                 dataGrid.ItemsSource = MainWindow.db.Accounts.ToList();
             }
-            catch
-            {
-                MessageBox.Show("Error adding user, please fill all the fields.");
-            }
+            else MessageBox.Show("Error adding user to the database.");
 
         }
     }

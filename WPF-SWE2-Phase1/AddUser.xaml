@@ -23,7 +23,7 @@
             </TextBlock.LayoutTransform>
         </TextBlock>
         
-        <TextBox HorizontalAlignment="Left" Height="37" Margin="244,178,0,0" Name="textBox1" TextWrapping="Wrap" VerticalAlignment="Top" Width="192" FontSize="16" />
+        <TextBox HorizontalAlignment="Left" Height="37" Margin="244,178,0,0" x:Name="usernameTextField" TextWrapping="Wrap" VerticalAlignment="Top" Width="192" FontSize="16" />
 
         <Image Source="imges/phar.jpg" Margin="-101,12,268.4,503.4" RenderTransformOrigin="0.5,0.5" OpacityMask="{x:Null}">
             <Image.RenderTransform>
@@ -36,11 +36,11 @@
             </Image.RenderTransform>
         </Image>
         
-        <Button Content="Submit" HorizontalAlignment="Left" Margin="353,407,0,0" VerticalAlignment="Top" Width="107" Height="38" FontSize="14" Click="Button_Click_1" />
+        <Button Content="Submit" HorizontalAlignment="Left" Margin="353,407,0,0" VerticalAlignment="Top" Width="107" Height="38" FontSize="14" Click="SubmitCliced" />
         
         <PasswordBox Name="PasswordTextField" HorizontalAlignment="Left" Margin="244,240,0,0" VerticalAlignment="Top" Width="192" Height="38" FontSize="16"/>
         <RadioButton Content="Admin" Name="AdminRadioBtn" HorizontalAlignment="Left" Margin="244,313,0,0" VerticalAlignment="Top" Height="34" Width="104" FontSize="18" BorderThickness="5,5,5,5"/>
-        <RadioButton Content="User" HorizontalAlignment="Left" Margin="353,313,0,0" VerticalAlignment="Top" Height="34" Width="104" FontSize="18" RenderTransformOrigin="1.663,0.412" BorderThickness="5,5,5,5"/>
+        <RadioButton IsChecked="True" Content="User" HorizontalAlignment="Left" Margin="353,313,0,0" VerticalAlignment="Top" Height="34" Width="104" FontSize="18" RenderTransformOrigin="1.663,0.412" BorderThickness="5,5,5,5"/>
         <TextBlock FontWeight="Bold" Height="38" HorizontalAlignment="Center" Margin="60,309,355,253" Text=" Role " VerticalAlignment="Center" Width="110"  FontSize="20">
             <TextBlock.LayoutTransform  >
                 <RotateTransform Angle="360 " />

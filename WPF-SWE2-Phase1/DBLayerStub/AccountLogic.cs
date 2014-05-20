@@ -16,5 +16,14 @@ namespace WPF_SWE2_Phase1.DBLayerStub
 
             return new Account();
         }
+
+        // A function that adds a new account with the recieved parameters
+        public static bool addAccount(string username, string password, bool role)
+        {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                return false;
+
+            return true;
+        }
     }
 }

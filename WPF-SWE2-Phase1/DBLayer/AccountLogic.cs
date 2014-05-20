@@ -23,5 +23,28 @@ namespace WPF_SWE2_Phase1.DBLayer
                 return null;
             }
         }
+
+        // A function that adds a new account with the recieved parameters
+        public static bool addAccount(string username, string password, bool role)
+        {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || role == null)
+                return false;
+
+            Account acc = new Account();
+            acc.Name = username;
+            acc.Password = password;
+            acc.Role = role;
+
+            try
+            {
+                MainWindow.db.Accounts.Add(acc);
+                MainWindow.db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
