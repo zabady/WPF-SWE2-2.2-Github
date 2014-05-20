@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
+using WPF_SWE2_Phase1.DBLayer;
 
 namespace WPF_SWE2_Phase1
 {
@@ -20,54 +21,40 @@ namespace WPF_SWE2_Phase1
     /// Interaction logic for AddMedicine.xaml
     /// </summary>
 
-
-    /*  Da test mn laptop doaa
-     * Da laptop Sara kman
-     */
-
     public partial class AddMedicine : Page
     {
+        medicine_Logic med = new medicine_Logic();
+        bool check;
         public AddMedicine()
         {
             InitializeComponent();
             userTextBlock.Text = "Welcome: " + MainWindow.user.Name + "\nRole: Admin";
+          
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (nameTxtBox.Text != null && categoryTxtBox.Text != null)
+            try
             {
-                try
+                  //if(nameTxtBox.Text!=null|| int.Parse(priceTxtBox.Text)!=null||int.Parse(quantityTxtBox.Text)!=null|| categoryTxtBox.Text!=null|| (System.DateTime)datePicker.SelectedDate !=null)
+                check = med.Add_Medecine_Logic(nameTxtBox.Text, int.Parse(priceTxtBox.Text), int.Parse(quantityTxtBox.Text), categoryTxtBox.Text, (System.DateTime)datePicker.SelectedDate);
+                if (check == true)
                 {
-                    Medicine medicine = new Medicine();
-                    medicine.Name = nameTxtBox.Text;
-                    medicine.Price = int.Parse(priceTxtBox.Text);
-                    medicine.Quantity = int.Parse(quantityTxtBox.Text);
-                    medicine.Category = categoryTxtBox.Text;
-                    medicine.ExpireDate = (System.DateTime)datePicker.SelectedDate;
-
-                    MessageBox.Show(medicine.Name + "\n" +
-                            medicine.Price + "\n" +
-                            medicine.Quantity + "\n" +
-                            medicine.Category + "\n" +
-                            medicine.ExpireDate + "\n");
-                    try
-                    {
-                        MainWindow.db.Medicines.Add(medicine);
-                        MainWindow.db.SaveChanges();
-                        dataGrid.ItemsSource = MainWindow.db.Medicines.ToList();
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Errod adding medicine");
-                    }
+                    MessageBox.Show("Item: " + nameTxtBox.Text + "\n with price: " + int.Parse(priceTxtBox.Text) + "\n with quantity: " + int.Parse(quantityTxtBox.Text) + "\n at category: " + categoryTxtBox.Text + "\nit's expiry date: " + (System.DateTime)datePicker.SelectedDate);
+                    dataGrid.ItemsSource = MainWindow.db.Medicines.ToList();
                 }
-                catch
+                else
                 {
-                    MessageBox.Show("All Fields are required");
+                    MessageBox.Show("Error adding medicine");
                 }
-            } else MessageBox.Show("All Fields are required");
+            }
+            catch
+            {
+                MessageBox.Show("all fields are required");
+            }
         }
+        
+
 
         public static bool onlyNumeric(string text)
         {
