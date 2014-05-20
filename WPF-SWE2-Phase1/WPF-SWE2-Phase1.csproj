@@ -80,6 +80,8 @@
     <Compile Include="AddMedicine.xaml.cs">
       <DependentUpon>AddMedicine.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DBLayerStub\AccountLogic.cs" />
+    <Compile Include="DBLayer\AccountLogic.cs" />
     <Compile Include="EditProfile.xaml.cs">
       <DependentUpon>EditProfile.xaml</DependentUpon>
     </Compile>

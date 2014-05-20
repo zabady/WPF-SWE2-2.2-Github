@@ -8,9 +8,9 @@
     </Page.Background>
 
     <Grid>
-        <TextBox Height="21" HorizontalAlignment="Left" Margin="143,148,0,0" Name="mytext1" VerticalAlignment="Top" Width="144" />
+        <TextBox Height="21" HorizontalAlignment="Left" Margin="143,148,0,0" x:Name="usernameTextField" VerticalAlignment="Top" Width="144" />
 
-        <TextBox Height="21" HorizontalAlignment="Right" Margin="0,175,238,0" Name="mytext2" VerticalAlignment="Top" Width="144" />
+        <TextBox Height="21" HorizontalAlignment="Right" Margin="0,175,238,0" x:Name="passwordTextField" VerticalAlignment="Top" Width="144" />
 
         <TextBlock Text=" User Name" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="40,148,382,180" Height="22" Width="103" FontWeight="Bold">
             <TextBlock.LayoutTransform>

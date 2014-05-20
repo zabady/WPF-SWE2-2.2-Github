@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF-SWE2-Phase1", "WPF-SWE2-Phase1\WPF-SWE2-Phase1.csproj", "{98D00AE1-9E50-45AB-B423-C0C056BFC1FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWE-UnitTest", "SWE-UnitTest\SWE-UnitTest.csproj", "{2423110E-8DAD-4082-AAF3-DF2B89559C45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{98D00AE1-9E50-45AB-B423-C0C056BFC1FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98D00AE1-9E50-45AB-B423-C0C056BFC1FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98D00AE1-9E50-45AB-B423-C0C056BFC1FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2423110E-8DAD-4082-AAF3-DF2B89559C45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2423110E-8DAD-4082-AAF3-DF2B89559C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2423110E-8DAD-4082-AAF3-DF2B89559C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2423110E-8DAD-4082-AAF3-DF2B89559C45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

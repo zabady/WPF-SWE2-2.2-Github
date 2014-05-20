@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Configuration;
+using WPF_SWE2_Phase1.DBLayer;
 
 namespace WPF_SWE2_Phase1
 {
@@ -30,27 +31,30 @@ namespace WPF_SWE2_Phase1
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //ConnectionStringSettings connection =  ConfigurationManager.ConnectionStrings["PharmacyFinalEntities"];
-            //MessageBox.Show(connection.IsReadOnly().ToString());
+            if (string.IsNullOrEmpty(usernameTextField.Text) || string.IsNullOrEmpty(passwordTextField.Text))
+                MessageBox.Show("Values cannot be empty");
 
-            try
+            else
             {
-                MainWindow.user = db.Accounts.Single(acc => acc.Name == mytext1.Text && acc.Password == mytext2.Text);
+                try
+                {
+                    MainWindow.user = AccountLogic.getAccount(usernameTextField.Text, passwordTextField.Text);
 
-                if (MainWindow.user.Role == true)
-                {
-                    Admin adminPage = new Admin();
-                    this.NavigationService.Navigate(adminPage);
+                    if (MainWindow.user.Role == true)
+                    {
+                        Admin adminPage = new Admin();
+                        this.NavigationService.Navigate(adminPage);
+                    }
+                    else
+                    {
+                        User userPage = new User();
+                        this.NavigationService.Navigate(userPage);
+                    }
                 }
-                else
+                catch
                 {
-                    User userPage = new User();
-                    this.NavigationService.Navigate(userPage);
+                    MessageBox.Show("Wrong username or password");
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Wrong username or password");
             }
         }
     }
