@@ -11,13 +11,14 @@ namespace SWE_UnitTest
     [TestFixture]
     class MedicineLogicTest
     {
-        MedicineLogic medTest = new MedicineLogic();
+        MedicineLogic medicineLogic = new MedicineLogic();
 
+        //////////////////////////////////////////////// Testing adding new medicine
         // Testing normal values
         [Test]
         public void addMedicine_normalValue()
         {
-            bool actual = medTest.addMedicine("Not Empty", 10, 10, "Not Empty", new DateTime(2015, 1, 1));
+            bool actual = medicineLogic.addMedicine("Not Empty", 10, 10, "Not Empty", new DateTime(2015, 1, 1));
             Assert.IsTrue(actual, "Test failed with normal values.");
         }
 
@@ -25,7 +26,7 @@ namespace SWE_UnitTest
         [Test]
         public void addMedicine_emptyName()
         {
-            bool actual = medTest.addMedicine("", 10, 10, "Not Empty", new DateTime(2015, 1, 1));
+            bool actual = medicineLogic.addMedicine("", 10, 10, "Not Empty", new DateTime(2015, 1, 1));
             Assert.IsFalse(actual, "Test failed with empty medicine name.");
         }
 
@@ -33,7 +34,7 @@ namespace SWE_UnitTest
         [Test]
         public void addMedicine_outBoundryPrice()
         {
-            bool actual = medTest.addMedicine("Not Empty", 0, 10, "Not Empty", new DateTime(2015, 1, 1));
+            bool actual = medicineLogic.addMedicine("Not Empty", 0, 10, "Not Empty", new DateTime(2015, 1, 1));
             Assert.IsFalse(actual, "Test failed with out boundry price.");
         }
 
@@ -41,7 +42,7 @@ namespace SWE_UnitTest
         [Test]
         public void addMedicine_outBoundryQuantity()
         {
-            bool actual = medTest.addMedicine("Not Empty", 10, 0, "Not Empty", new DateTime(2015, 1, 1));
+            bool actual = medicineLogic.addMedicine("Not Empty", 10, 0, "Not Empty", new DateTime(2015, 1, 1));
             Assert.IsFalse(actual, "Test failed with out boundry quantity.");
         }
 
@@ -49,7 +50,7 @@ namespace SWE_UnitTest
         [Test]
         public void addMedicine_emptyCategoryName()
         {
-            bool actual = medTest.addMedicine("Not Empty", 10, 10, "", new DateTime(2015, 1, 1));
+            bool actual = medicineLogic.addMedicine("Not Empty", 10, 10, "", new DateTime(2015, 1, 1));
             Assert.IsFalse(actual, "Test failed with empty category name.");
         }
 
@@ -57,7 +58,7 @@ namespace SWE_UnitTest
         [Test]
         public void addMedicine_notInitializedExpiredDate()
         {
-            bool actual = medTest.addMedicine("Not Empty", 10, 10, "Not Empty", new DateTime());
+            bool actual = medicineLogic.addMedicine("Not Empty", 10, 10, "Not Empty", new DateTime());
             Assert.IsFalse(actual, "Test failed with empty date.");
         }
 
@@ -65,8 +66,25 @@ namespace SWE_UnitTest
         [Test]
         public void addMedicine_outBoundryExpiredDate()
         {
-            bool actual = medTest.addMedicine("Not Empty", 10, 10, "Not Empty", new DateTime(2010, 1, 1));
+            bool actual = medicineLogic.addMedicine("Not Empty", 10, 10, "Not Empty", new DateTime(2010, 1, 1));
             Assert.IsFalse(actual, "Test failed with out boundry expired date.");
+        }
+
+        //////////////////////////////////////////////// Testing deleting medicine
+        // Testing normal values
+        [Test]
+        public void deleteMedicine_normalValues()
+        {
+            bool actual = medicineLogic.deleteMedicine("Not Empty");
+            Assert.IsTrue(actual, "Test failed with normal values.");
+        }
+
+        // Testing empty medicine name
+        [Test]
+        public void deleteMedicine_emptyMedicineName()
+        {
+            bool actual = medicineLogic.deleteMedicine("");
+            Assert.IsFalse(actual, "Test failed with empty medicine name.");
         }
     }
 }

@@ -10,6 +10,7 @@ namespace WPF_SWE2_Phase1.DBLayer
     {
         Medicine medicine = new Medicine();
 
+        // A function to add medicine
         public bool addMedicine(string name, int price, int quatity, string category, DateTime expireDate)
         {
             if (string.IsNullOrEmpty(name) || price <= 0 || quatity <= 0 ||
@@ -25,6 +26,25 @@ namespace WPF_SWE2_Phase1.DBLayer
             try
             {
                 MainWindow.db.Medicines.Add(medicine);
+                MainWindow.db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // A function to delete medicine
+        public bool deleteMedicine(string medicineName)
+        {
+            if (string.IsNullOrEmpty(medicineName))
+                return false;
+
+            medicine = MainWindow.db.Medicines.Single(c => c.Name == medicineName);
+            try
+            {
+                MainWindow.db.Medicines.Remove(medicine);
                 MainWindow.db.SaveChanges();
                 return true;
             }

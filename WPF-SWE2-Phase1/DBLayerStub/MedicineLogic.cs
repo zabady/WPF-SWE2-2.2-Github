@@ -16,5 +16,14 @@ namespace WPF_SWE2_Phase1.DBLayerStub
 
             return true;
         }
+
+        // A function to delete medicine
+        public bool deleteMedicine(string medicineName)
+        {
+            if (string.IsNullOrEmpty(medicineName))
+                return false;
+
+            return true;
+        }
     }
 }

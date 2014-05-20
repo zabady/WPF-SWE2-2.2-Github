@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPF_SWE2_Phase1.DBLayer;
 
 namespace WPF_SWE2_Phase1
 {
@@ -19,21 +20,22 @@ namespace WPF_SWE2_Phase1
     /// </summary>
     public partial class Admin : Page
     {
-        private PharmacyFinalEntities db = new PharmacyFinalEntities();
+        private MedicineLogic medLogic = new MedicineLogic();
+
         public Admin()
         {
             InitializeComponent();
             this.userNameTxt.Text = "Welcome: " + MainWindow.user.Name;
-            this.medicineData.ItemsSource = MainWindow.db.Medicines.ToList();
+            refreshDataGrid();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void AddUserClicked(object sender, RoutedEventArgs e)
         {
             AddUser addUserPage = new AddUser();
             this.NavigationService.Navigate(addUserPage);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void AddMedicineClicked(object sender, RoutedEventArgs e)
         {
             AddMedicine addMedicinePage = new AddMedicine();
             this.NavigationService.Navigate(addMedicinePage);
@@ -42,21 +44,24 @@ namespace WPF_SWE2_Phase1
         /////////////////////////////////////////////////////////////// TIFA'S TASK
         private void RemoveBtnClicked(object sender, RoutedEventArgs e)
         {
-            try
+            if (string.IsNullOrEmpty(SearchBox.Text))
             {
-                Medicine deletedata = new Medicine();
-                Medicine data = MainWindow.db.Medicines.Single(c => c.Name == SearchBox.Text);
-                MainWindow.db.Medicines.Remove(data); // DeleteOnSubmit()
-                MainWindow.db.SaveChanges();
-                MessageBox.Show(data.Name + "\n" + "Returned Successfully");
-            }
-            catch
-            {
-                MessageBox.Show(SearchBox.Text + "\n" + "not Found");
+                MessageBox.Show("Type medicine name first.");
+                return;
             }
 
-            medicineData.ItemsSource = MainWindow.db.Medicines.ToList();
+            if (medLogic.deleteMedicine(SearchBox.Text))
+            {
+                MessageBox.Show(SearchBox.Text + " deleted.");
+                SearchBox.Text = "";
+                refreshDataGrid();
+            }
+            else MessageBox.Show(SearchBox.Text + " not Found.");
+        }
 
+        private void refreshDataGrid()
+        {
+            medicineDataGrid.ItemsSource = MainWindow.db.Medicines.ToList();
         }
 
 
@@ -67,17 +72,17 @@ namespace WPF_SWE2_Phase1
             {
                 string searchItem = SearchBox.Text;
                 Medicine medicine = new Medicine();
-                medicineData.Visibility = Visibility.Visible;
-                var query = db.Medicines.Where(med => med.Name.Contains(searchItem)).ToList();
-                medicineData.ItemsSource = query;
-                if (medicineData.ItemsSource != null)
+                medicineDataGrid.Visibility = Visibility.Visible;
+                var query = MainWindow.db.Medicines.Where(med => med.Name.Contains(searchItem)).ToList();
+                medicineDataGrid.ItemsSource = query;
+                if (medicineDataGrid.ItemsSource != null)
                 {
                     removeBtn.Visibility = Visibility.Visible;
                 }
             }
             else
             {
-                medicineData.ItemsSource = MainWindow.db.Medicines.ToList();
+                refreshDataGrid();
             }
         }
 
@@ -89,7 +94,7 @@ namespace WPF_SWE2_Phase1
 
         private void PageLoaded(object sender, RoutedEventArgs e)
         {
-            medicineData.ItemsSource = db.Medicines.ToList();
+            medicineDataGrid.ItemsSource = MainWindow.db.Medicines.ToList();
         }
     }
 }
